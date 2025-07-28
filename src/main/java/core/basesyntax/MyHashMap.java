@@ -67,6 +67,7 @@ public class MyHashMap<K, V> implements MyMap<K, V> {
         }
         Node<K, V>[] oldTable = table;
         table = new Node[oldTable.length << 1]; //oldTable * 2
+        int oldSize = size;
         size = 0;
 
         for (Node<K, V> node : oldTable) {
@@ -77,6 +78,7 @@ public class MyHashMap<K, V> implements MyMap<K, V> {
                 }
             }
         }
+        size = oldSize;
     }
 
     private void putVal(K key, V value) {
